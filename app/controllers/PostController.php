@@ -79,26 +79,57 @@ class PostController extends Controller
   }
 
   public function setStatus(array $data = [])
-  {
-    if (empty($data) || Auth::getUser()->id !== (int)$data["author_id"]) {
-      header("Location: " . BASE_URL . "/post");
-      exit;
+{
+    if (empty($data) || empty($data["slug"])) {
+        header("Location: " . BASE_URL . "/post");
+        exit;
     }
 
-    $this->model("Post")->setStatus($data);
+    $post = $this->model("Post")->getPostMetaBySlug($data["slug"]);
 
-    header("Location: " . $_SERVER["HTTP_REFERER"]);
-  }
-
-  public function delete(array $data = [])
-  {
-    if (empty($data) || Auth::getUser()->id !== (int)$data["author_id"]) {
-      header("Location: " . BASE_URL . "/post");
-      exit;
+    if (!$post) {
+        header("Location: " . BASE_URL . "/post");
+        exit;
     }
 
-    $this->model("Post")->delete($data);
+    if ((int)$post->author_id !== (int)Auth::getUser()->id) {
+        header("Location: " . BASE_URL . "/post");
+        exit;
+    }
+
+    $this->model("Post")->setStatus([
+        "slug" => $post->slug,
+        "old_status" => $post->status
+    ]);
 
     header("Location: " . $_SERVER["HTTP_REFERER"]);
-  }
+    exit;
+}
+public function delete(array $data = [])
+{
+    if (empty($data) || empty($data["slug"])) {
+        header("Location: " . BASE_URL . "/post");
+        exit;
+    }
+
+    $post = $this->model("Post")->getPostMetaBySlug($data["slug"]);
+
+    if (!$post) {
+        header("Location: " . BASE_URL . "/post");
+        exit;
+    }
+
+    if ((int)$post->author_id !== (int)Auth::getUser()->id) {
+        header("Location: " . BASE_URL . "/post");
+        exit;
+    }
+
+    $this->model("Post")->delete([
+        "slug" => $post->slug,
+        "featured_image" => $post->featured_image
+    ]);
+
+    header("Location: " . $_SERVER["HTTP_REFERER"]);
+    exit;
+}
 }

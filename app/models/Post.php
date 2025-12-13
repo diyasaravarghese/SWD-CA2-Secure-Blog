@@ -190,7 +190,17 @@ class Post extends Model
 
     return $this->single();
   }
+public function getPostMetaBySlug(string $slug)
+{
+    $query = "SELECT slug, author_id, status, featured_image
+              FROM $this->table
+              WHERE slug = :slug";
 
+    $this->prepare($query);
+    $this->bind(":slug", $slug);
+
+    return $this->single();
+}
   public function update(array $data)
   {
     $old_data = $this->getOldDataBySlug($data["old_slug"]);
