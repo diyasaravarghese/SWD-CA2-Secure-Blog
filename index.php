@@ -1,4 +1,17 @@
 <?php
+$secure = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off');
+
+session_set_cookie_params([
+    'lifetime' => 0,       // session cookie
+    'path' => '/',
+    'domain' => '',
+    'secure' => $secure,   // false on localhost (HTTP), true on HTTPS
+    'httponly' => true,    // prevents JS access to session cookie
+    'samesite' => 'Lax'    // protects against CSRF
+]);
+
+ini_set('session.use_strict_mode', 1);
+ini_set('session.use_only_cookies', 1);
 
 session_start();
 
