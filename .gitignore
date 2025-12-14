@@ -7,3 +7,6 @@
 /assets/img/profile_pictures/*
 !/assets/img/profile_pictures/.gitkeep
 !/assets/img/profile_pictures/default.jpg
+# Security Improvement #3: prevent data leaks
+config/config.php
+config/*.sql
