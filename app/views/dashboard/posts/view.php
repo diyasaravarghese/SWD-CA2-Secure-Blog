@@ -13,7 +13,7 @@
           <figcaption class="figure-caption"><?= htmlspecialchars($post->image_caption); ?></figcaption>
         </figure>
         <div class="content mt-3 text-start">
-          <?= $post->content; ?>
+          <?= nl2br(htmlspecialchars($post->content, ENT_QUOTES, 'UTF-8')); ?>
           <br>
           <p>Author: <?= htmlspecialchars($post->author_name) ?></p>
         </div>
