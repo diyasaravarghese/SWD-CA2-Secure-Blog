@@ -68,8 +68,9 @@ PHP-based Blogging Platform Web Application built with PHP and MySQL. The system
    mysql -u root -p simple_project_blog_system < config/simple_project_blog_system.sql
    ```
 
-6. Configure the database, base url, and base directory settings in `config/config.php`.
+6. Configure the database, base URL, and base directory settings using `config/config.example.php`, and create a local `config.php` file (not committed to the repository).
 
 7. Start XAMPP Control Panel and launch the **Apache** and **MySQL** services.
 
-8. Access the application at `http://localhost/php-blog-system` (adjust the URL if your project is in a subfolder within `htdocs`).
+8. Access the application at `http://localhost/SWD-CA2-Secure-Blog` (adjust the URL if your project is in a subfolder within `htdocs`).
+
