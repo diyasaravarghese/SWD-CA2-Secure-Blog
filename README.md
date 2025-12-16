@@ -36,12 +36,22 @@ PHP-based Blogging Platform Web Application built with PHP and MySQL. The system
 - JavaScript (for client-side interactions)
 - Bootstrap 5 (for CSS framework)
 
+## Project Structure
+
+- `app/` – Application logic (controllers, models, views).
+- `config/` – Configuration templates and environment settings.
+- `core/` – Core framework bootstrap files.
+- `helpers/` – Reusable helper functions.
+- `assets/` – Static files (CSS, JavaScript, images).
+- `index.php` – Application entry point.
+
+
 ## Setup
 
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/krisnaajiep/php-blog-system.git
+   git clone https://github.com/diyasaravarghese/SWD-CA2-Secure-Blog.git
    ```
 
 2. Navigate to the project directory:
@@ -53,7 +63,8 @@ PHP-based Blogging Platform Web Application built with PHP and MySQL. The system
 3. Move the project files to the XAMPP `htdocs` directory (usually located in `C:\xampp\htdocs` on Windows or `/Applications/XAMPP/htdocs` on macOS):
 
    ```bash
-   mv php-blog-system /path-to-xampp/htdocs/
+   
+ mv SWD-CA2-Secure-Blog /path-to-xampp/htdocs/
    ```
 
 4. Create new database
@@ -72,5 +83,15 @@ PHP-based Blogging Platform Web Application built with PHP and MySQL. The system
 
 7. Start XAMPP Control Panel and launch the **Apache** and **MySQL** services.
 
-8. Access the application at `http://localhost/SWD-CA2-Secure-Blog` (adjust the URL if your project is in a subfolder within `htdocs`).
+8. Access the application at `http://localhost/php-blog-system/auth/signin` (adjust the URL if your project is in a subfolder within `htdocs`).
+
+## Usage Guidelines
+
+- Navigate to the login page and authenticate.
+- Create, edit, and delete your own blog posts.
+- Access control prevents modifying other users’ posts.
+- Admin users can manage users and content.
+- Search and category features support content browsing.
+
+
 
